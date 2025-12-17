@@ -28,29 +28,27 @@ class StagiaireCrudTest extends TestCase
         ]);
     }
 
-    // public function test_update_stagiaire()
-    // {
-    //     $stagiaire = Stagiaire::factory()->create([
-    //         'nom' => 'Ancien',
-    //         'prenom' => 'Ancien',
-    //         'adresse' => 'Rabat'
-    //     ]);
+    public function test_update_stagiaire()
+    {
+        $stagiaire = Stagiaire::factory()->create([
+            'nom' => 'fatima',
+            'prenom' => 'bkt',
+            'datenaissance' => '2000-02-12'
+        ]);
 
-    //     $response = $this->put(route('stagiaire.update', $stagiaire), [
-    //         'nom' => 'Nouveau',
-    //         'prenom' => 'Nouveau',
-    //         'datenaissance' => $stagiaire->datenaissance,
-    //         'adresse' => 'Tanger',
-    //     ]);
+        $response = $this->put(route('stagiaire.update', $stagiaire->id), [
+            'nom' => 'nabil',
+            'prenom' => 'nabil',
+            'datenaissance' => $stagiaire->datenaissance,
+        ]);
 
-    //     $response->assertStatus(302);
-    //     $this->assertDatabaseHas('stagiaires', [
-    //         'id' => $stagiaire->id,
-    //         'nom' => 'Nouveau',
-    //         'prenom' => 'Nouveau',
-    //         'adresse' => 'Tanger',
-    //     ]);
-    // }
+        $response->assertStatus(302);
+        $this->assertDatabaseHas('stagiaires', [
+            'id' => $stagiaire->id,
+            'nom' => 'nabil',
+            'prenom' => 'nabil',
+        ]);
+    }
 
     // public function test_delete_stagiaire()
     // {
