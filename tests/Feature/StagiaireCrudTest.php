@@ -50,15 +50,15 @@ class StagiaireCrudTest extends TestCase
         ]);
     }
 
-    // public function test_delete_stagiaire()
-    // {
-    //     $stagiaire = Stagiaire::factory()->create();
+    public function test_delete_stagiaire()
+    {
+        $stagiaire = Stagiaire::factory()->create();
 
-    //     $response = $this->delete(route('stagiaire.destroy', $stagiaire));
+        $response = $this->delete(route('stagiaire.destroy', $stagiaire));
 
-    //     $response->assertStatus(302);
-    //     $this->assertDatabaseMissing('stagiaires', [
-    //         'id' => $stagiaire->id,
-    //     ]);
-    // }
+        $response->assertStatus(302);
+        $this->assertDatabaseMissing('stagiaires', [
+            'id' => $stagiaire->id,
+        ]);
+    }
 }

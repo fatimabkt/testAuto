@@ -18,4 +18,10 @@ class StagiaireController extends Controller
         $stagiaire->update($request->all());
         return redirect()->route('stagiaire.index');
     }
+    public function destroy($id)
+    {
+        $stagiaire = Stagiaire::findOrFail($id);
+        $stagiaire->delete();
+        return redirect()->route('stagiaire.index');
+    }
 }
